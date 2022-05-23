@@ -1,0 +1,188 @@
+
+Routing.js
+
+--App.js:
+import './App.css';
+import Home from './Home';
+import Navbar from './Navbar';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+//import Create from './Create';
+import Services from './Services';
+import Projects from './Projects';
+import Contacts from './Contacts';
+
+function App() {
+  return (
+    <Router>
+    <div className="App">
+      <Navbar/>
+      <div className='content'>
+      <Switch>
+        <Route exact path="/">
+          <Home/>
+        </Route>
+        <Route exact path="/Services">
+          <Services/>
+        </Route>
+        <Route exact path="/Projects">
+          <Projects/>
+        </Route>
+        <Route exact path="/Contacts">
+          <Contacts/>
+        </Route>
+      </Switch>
+      </div>
+    </div>
+    </Router>
+  );
+}
+
+export default App;
+
+--Home.js:
+
+import { useState } from 'react'
+import BlogList from './BlogList';
+
+
+const Home = () => {
+
+    const [blogs,setBlogs] = useState([
+        {title: 'My new website',body:'lorem ipsum...',author:'mario',id:1},
+        {title: 'Welcome party',body:'lorem ipsum...',author:'yoshi',id:2},
+        {title: 'Web development',body:'lorem ipsum...',author:'mario',id:3},
+    ])
+    //let name = "kiran"
+    // const [name,setName] = useState('kiran')
+    // const handleClick = () => {
+    //     setName('akash')
+    // }
+
+    // const handleClickAgain = (name) => {
+    //     console.log('Hello ' + name)
+    // }
+    return ( 
+        <div className="home">
+         <BlogList blogs={blogs} title="All Blogs"/>
+        </div> 
+     )
+}
+ 
+export default Home;
+
+--contact.js:
+
+const Contacts = () => {
+    return ( 
+        <div className="Contacts">
+            <h2>Welcome to Contact Page</h2>
+        </div>
+     );
+}
+ 
+export default Contacts;
+
+--services.js:
+const Services = () => {
+    return ( 
+        <div className="Services">
+            <h2>Welcome to Service Page</h2>
+        </div>
+     );
+}
+ 
+export default Services;
+
+--navbar.js:
+
+import React from "react";
+const Projects = () => {
+    return (  
+        <div className="Projects">
+            <h2>Welcome to Projects Page</h2>
+        </div>
+    );
+}
+ 
+export default Projects;
+
+--project.js:
+
+import React from "react";
+
+ 
+const Projects = () => {
+    return (  
+        <div className="Projects">
+            <h2>Welcome to Projects Page</h2>
+        </div>
+    );
+}
+ 
+export default Projects;
+
+--bloglist.js:
+
+const title ="Welcome to Main page"
+    return ( 
+        <div className="create">
+            <h2>{title}</h2>
+        </div>
+     );
+    // const blogs = props.blogs
+    // const titles = props.title
+    // return (  
+    //    <div className="blog-list">
+    //        <h1>{titles}</h1>
+    //       {blogs.map((blog) => (
+    //         <div className='blog-preview' key={blog}>
+    //             <h2>{blog.title}</h2>
+    //             <p>Written By {blog.author}</p> 
+    //             {/* <button onClick={() => handleDelete(blog.id)}>Delete Blog</button> */}
+    //         </div>
+    //     ))}
+    //    </div> 
+    // );
+}
+ 
+export default BlogList;
+
+--App.css:
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
